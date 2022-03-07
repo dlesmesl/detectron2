@@ -39,6 +39,12 @@ from detectron2.evaluation import (
 )
 from detectron2.modeling import GeneralizedRCNNWithTTA
 
+# Adding the LIVECell datasets from the Vikas folder
+from detectron2.data.datasets import register_coco_instances
+register_coco_instances("LIVECell_train", {}, "/Dataset/LiveCell/annotations/livecell_coco_train.json", "/Dataset/LiveCell/images/train")
+register_coco_instances("LIVECell_test", {}, "/Dataset/LiveCell/annotations/livecell_coco_test.json", "/Dataset/LiveCell/images/test")
+register_coco_instances("LIVECell_val", {}, "/Dataset/LiveCell/annotations/livecell_coco_val.json", "/Dataset/LiveCell/images/val")
+# ------------------------------------------------------
 
 class Trainer(DefaultTrainer):
     """
