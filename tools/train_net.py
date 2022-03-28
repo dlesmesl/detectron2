@@ -41,9 +41,55 @@ from detectron2.modeling import GeneralizedRCNNWithTTA
 
 # Adding the LIVECell datasets from the Vikas folder
 from detectron2.data.datasets import register_coco_instances
+nico_netscratch = "/netscratch/lesmes/Datasets"
+# Vikas LIVECell folder
 register_coco_instances("LIVECell_train", {}, "/Dataset/LiveCell/annotations/livecell_coco_train.json", "/Dataset/LiveCell/images/train")
 register_coco_instances("LIVECell_test", {}, "/Dataset/LiveCell/annotations/livecell_coco_test.json", "/Dataset/LiveCell/images/test")
 register_coco_instances("LIVECell_val", {}, "/Dataset/LiveCell/annotations/livecell_coco_val.json", "/Dataset/LiveCell/images/val")
+# Nicolas LIVECell folder
+register_coco_instances("LIVECell_nico_train", {}, os.path.join(nico_netscratch, "LIVECell/annotations/livecell_coco_train.json"),
+	os.path.join(nico_netscratch, "LIVECell/images/train_val"))
+register_coco_instances("LIVECell_nico_test", {}, os.path.join(nico_netscratch, "LIVECell/annotations/livecell_coco_test.json"),
+	os.path.join(nico_netscratch, "LIVECell/images/test"))
+register_coco_instances("LIVECell_nico_val", {}, os.path.join(nico_netscratch, "LIVECell/annotations/livecell_coco_val.json"),
+	os.path.join(nico_netscratch, "LIVECell/images/train_val"))
+# EVICAN
+register_coco_instances("EVICAN_train", {}, os.path.join(nico_netscratch, "EVICAN/annotations/evican_coco_train.json"),
+	os.path.join(nico_netscratch, "EVICAN/images/train"))
+register_coco_instances("EVICAN_test_easy", {}, os.path.join(nico_netscratch, "EVICAN/annotations/nabeel_annotations/evican_coco_test_easy.json"),
+	os.path.join(nico_netscratch, "EVICAN/images/test"))
+register_coco_instances("EVICAN_test_medium", {}, os.path.join(nico_netscratch, "EVICAN/annotations/evican_coco_test_medium.json"),
+	os.path.join(nico_netscratch, "EVICAN/images/test"))
+register_coco_instances("EVICAN_test_difficult", {}, os.path.join(nico_netscratch, "EVICAN/annotations/evican_coco_test_difficult.json"),
+	os.path.join(nico_netscratch, "EVICAN/images/test"))
+register_coco_instances("EVICAN_val", {}, os.path.join(nico_netscratch, "EVICAN/annotations/evican_coco_val.json"),
+	os.path.join(nico_netscratch, "EVICAN/images/val"))
+# Cellpose
+register_coco_instances("Cellpose_train", {}, os.path.join(nico_netscratch, "Cellpose/annotations/cellpose_coco_train.json"),
+	os.path.join(nico_netscratch, "Cellpose/images/train"))
+register_coco_instances("Cellpose_test", {}, os.path.join(nico_netscratch, "Cellpose/annotations/cellpose_coco_test.json"),
+	os.path.join(nico_netscratch, "Cellpose/images/test"))
+# LIVECell + EVICAN
+register_coco_instances("LIVECell_EVICAN_train", {}, os.path.join(nico_netscratch, "LIVECell_EVICAN/annotations/livecell_evican_coco_train.json"),
+	os.path.join(nico_netscratch, "LIVECell_EVICAN/images/train_val"))
+#register_coco_instances("LIVECell_EVICAN_test", {}, os.path.join(nico_netscratch, "LIVECell_EVICAN/annotations/livecell_evican_coco_test.json"),
+#	os.path.join(nico_netscratch, "LIVECell_EVICAN/images/test"))
+register_coco_instances("LIVECell_EVICAN_val", {}, os.path.join(nico_netscratch, "LIVECell_EVICAN/annotations/livecell_evican_coco_val.json"),
+	os.path.join(nico_netscratch, "LIVECell_EVICAN/images/train_val"))
+# LIVECell + Cellpose
+register_coco_instances("LIVECell_Cellpose_train", {}, os.path.join(nico_netscratch, "LIVECell_Cellpose/annotations/livecell_cellpose_coco_train.json"),
+	os.path.join(nico_netscratch, "LIVECell_Cellpose/images/train_val"))
+#register_coco_instances("LIVECell_Cellpose_test", {}, os.path.join(nico_netscratch, "LIVECell_Cellpose/annotations/livecell_Cellpose_coco_test.json"),
+#	os.path.join(nico_netscratch, "LIVECell_Cellpose/images/test"))
+register_coco_instances("LIVECell_Cellpose_val", {}, os.path.join(nico_netscratch, "LIVECell/annotations/livecell_coco_val.json"),
+	os.path.join(nico_netscratch, "LIVECell_Cellpose/images/train_val")) # same as Nicolas LIVECell folder
+# LIVECell + EVICAN = Cellpose
+register_coco_instances("LIVECell_EVICAN_Cellpose_train", {}, os.path.join(nico_netscratch, "LIVECell_EVICAN_Cellpose/annotations/livecell_evican_cellpose_coco_train.json"),
+	os.path.join(nico_netscratch, "LIVECell_EVICAN_Cellpose/images/train_val"))
+#register_coco_instances("LIVECell_EVICAN_Cellpose_test", {}, os.path.join(nico_netscratch, "LIVECell_EVICAN_Cellpose/annotations/livecell_evican_Cellpose_coco_test.json"),
+#	os.path.join(nico_netscratch, "LIVECell_EVICAN_Cellpose/images/test"))
+register_coco_instances("LIVECell_EVICAN_Cellpose_val", {}, os.path.join(nico_netscratch, "LIVECell_EVICAN/annotations/livecell_evican_coco_val.json"),
+	os.path.join(nico_netscratch, "LIVECell_EVICAN_Cellpose/images/train_val")) # same as LIVECell_EVICAN validation
 # ------------------------------------------------------
 
 class Trainer(DefaultTrainer):
