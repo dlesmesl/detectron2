@@ -39,7 +39,7 @@ from detectron2.evaluation import (
 )
 from detectron2.modeling import GeneralizedRCNNWithTTA
 
-os.system('python {}/add_dataset.py'.format(os.path.dirname(__file__)))
+os.system('python add_dataset.py')
 
 class Trainer(DefaultTrainer):
     """
