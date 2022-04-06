@@ -86,5 +86,8 @@ datasets_dict = {
     #     os.path.join()),
 }
 
-for key, value in datasets_dict.items():
-    register_coco_instances(key, {}, value[0], value[1])
+
+
+if __name__ == "__main__":
+    for key, value in datasets_dict.items():
+        register_coco_instances(key, {}, value[0], value[1])
