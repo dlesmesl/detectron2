@@ -1,5 +1,4 @@
 import os
-from re import L
 from detectron2.data.datasets import register_coco_instances
 
 # Script to include datasets in detectron2
