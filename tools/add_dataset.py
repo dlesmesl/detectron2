@@ -81,6 +81,18 @@ datasets_dict = {
     'Cellpose_histmatch_test': (
         os.path.join(Cellpose_folder, 'annotations/cellpose_coco_test.json'),
         os.path.join(Cellpose_folder, 'preprocessing/histogram_matching/test')),
+    'LIVECell_shannon_train': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_train.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/Shannon_entropy/train_val')),
+    'LIVECell_shannon_val': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_val.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/Shannon_entropy/train_val')),
+    'LIVECell_shannon_test': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_test.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/Shannon_entropy/test')),
+    'LIVECell_shannon_blur_test': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_test.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/Shannon_entropy_blur/test')),
     # '': (
     #     os.path.join(),
     #     os.path.join()),
@@ -88,6 +100,7 @@ datasets_dict = {
 
 
 
-if __name__ == "__main__":
-    for key, value in datasets_dict.items():
-        register_coco_instances(key, {}, value[0], value[1])
+#if __name__ == "__main__":
+#    for key, value in datasets_dict.items():
+#        register_coco_instances(key, {}, value[0], value[1])
+#    print('hola')

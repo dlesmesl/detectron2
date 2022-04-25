@@ -39,7 +39,12 @@ from detectron2.evaluation import (
 )
 from detectron2.modeling import GeneralizedRCNNWithTTA
 
-os.system('python add_dataset.py')
+from detectron2.data.datasets import register_coco_instances
+
+from add_dataset import datasets_dict
+#custom_datasets = os.system('python {}/add_dataset.py'.format(os.path.dirname(__file__)))
+for key, value in datasets_dict.items():
+    register_coco_instances(key, {}, value[0], value[1])
 
 class Trainer(DefaultTrainer):
     """
