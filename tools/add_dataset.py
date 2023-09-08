@@ -11,6 +11,8 @@ LE_folder = os.path.join(nico_netscratch, 'LIVECell_EVICAN')
 LC_folder = os.path.join(nico_netscratch, 'LIVECell_Cellpose')
 LEC_folder = os.path.join(nico_netscratch, 'LIVECell_EVICAN_Cellpose')
 
+LIVECell_GAN = os.path.join(nico_netscratch, 'LIVECell_segmentationANDGAN')
+
 datasets_dict = {
     'LIVECell_nico_train': (
         os.path.join(LIVECell_folder, 'annotations/livecell_coco_train.json'),
@@ -66,10 +68,22 @@ datasets_dict = {
     'LIVECell_EVICAN_Cellpose_Lchannel_val': (
         os.path.join(LE_folder, 'annotations/livecell_evican_coco_val.json'),
         os.path.join(LEC_folder, 'preprocessing/channel_analysis/L_LAB/train_val')),
+    'LIVECell_EVICAN_Lchannel_train': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_train.json'),
+        os.path.join(LEC_folder, 'preprocessing/channel_analysis/L_LAB/train_val')),
+    'LIVECell_EVICAN_Lchannel_val': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_val.json'),
+        os.path.join(LEC_folder, 'preprocessing/channel_analysis/L_LAB/train_val')),
     'LIVECell_EVICAN_Cellpose_histmatch_train': (
-        os.path.join(LE_folder, 'annotations/livecell_evican_cellpose_coco_train.json'),
+        os.path.join(LEC_folder, 'annotations/livecell_evican_cellpose_coco_train.json'),
         os.path.join(LEC_folder, 'preprocessing/histogram_matching/train_val')),
     'LIVECell_EVICAN_Cellpose_histmatch_val': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_val.json'),
+        os.path.join(LEC_folder, 'preprocessing/histogram_matching/train_val')),
+    'LIVECell_EVICAN_histmatch_train': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_train.json'),
+        os.path.join(LEC_folder, 'preprocessing/histogram_matching/train_val')),
+    'LIVECell_EVICAN_histmatch_val': (
         os.path.join(LE_folder, 'annotations/livecell_evican_coco_val.json'),
         os.path.join(LEC_folder, 'preprocessing/histogram_matching/train_val')),
     'LIVECell_histmatch_test': (
@@ -93,6 +107,52 @@ datasets_dict = {
     'LIVECell_shannon_blur_test': (
         os.path.join(LIVECell_folder, 'annotations/livecell_coco_test.json'),
         os.path.join(LIVECell_folder, 'preprocessing/Shannon_entropy_blur/test')),
+    'LIVECell_EVICAN_Cellpose_shannon_train': (
+        os.path.join(LEC_folder, 'annotations/livecell_evican_cellpose_coco_train.json'),
+        os.path.join(LEC_folder, 'preprocessing/Shannon_entropy/train_val')),
+    'LIVECell_EVICAN_Cellpose_shannon_val': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_val.json'),
+        os.path.join(LEC_folder, 'preprocessing/Shannon_entropy/train_val')),
+    'LIVECell_EVICAN_shannon_train': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_train.json'),
+        os.path.join(LEC_folder, 'preprocessing/Shannon_entropy/train_val')),
+    'LIVECell_EVICAN_shannon_val': (
+        os.path.join(LE_folder, 'annotations/livecell_evican_coco_val.json'),
+        os.path.join(LEC_folder, 'preprocessing/Shannon_entropy/train_val')),
+    'EVICAN_shannon_test_easy': (
+        os.path.join(EVICAN_folder, 'annotations/nabeel_annotations/evican_coco_test_easy.json'),
+        os.path.join(EVICAN_folder, 'preprocessing/Shannon_entropy/test')),
+    'Cellpose_shannon_test': (
+        os.path.join(Cellpose_folder, 'annotations/cellpose_coco_test.json'),
+        os.path.join(Cellpose_folder, 'preprocessing/Shannon_entropy/test')),
+    'LIVECell_Lchannel_test': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_test.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/channel_analysis/L_LAB/test')),
+    'EVICAN_Lchannel_test_easy': (
+        os.path.join(EVICAN_folder, 'annotations/nabeel_annotations/evican_coco_test_easy.json'),
+        os.path.join(EVICAN_folder, 'preprocessing/channel_analysis/L_LAB/test')),
+    'Cellpose_Lchannel_test': (
+        os.path.join(Cellpose_folder, 'annotations/cellpose_coco_test.json'),
+        os.path.join(Cellpose_folder, 'preprocessing/channel_analysis/L_LAB/test')),
+    'LIVECell_Lchannel_train': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_train.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/channel_analysis/L_LAB/train_val')),
+    'LIVECell_Lchannel_val': (
+        os.path.join(LIVECell_folder, 'annotations/livecell_coco_val.json'),
+        os.path.join(LIVECell_folder, 'preprocessing/channel_analysis/L_LAB/train_val')),
+    'EVICAN_Lchannel_train': (
+        os.path.join(EVICAN_folder, 'annotations/evican_coco_train.json'),
+        os.path.join(EVICAN_folder, 'preprocessing/channel_analysis/L_LAB/train')),
+    'EVICAN_Lchannel_val': (
+        os.path.join(EVICAN_folder, 'annotations/evican_coco_val.json'),
+        os.path.join(EVICAN_folder, 'preprocessing/channel_analysis/L_LAB/val')),
+
+# -------------------- Datasets that are a mix from generated data and real data -------------------------------------
+# ----------------------------------------GAN images -----------------------------------------------------------------
+    'LIVECell_generated_full': (
+        os.path.join(LIVECell_GAN, 'annotations/livecell_coco_generatedFULL.json'),
+        os.path.join(LIVECell_GAN, 'images/train_val')),
+
     # '': (
     #     os.path.join(),
     #     os.path.join()),
